@@ -187,3 +187,25 @@ exports.check = function (req, res, next) {
         answer: answer
     });
 };
+
+// GET /quizzes/random_play
+exports.randomplay = function (req, res, next){
+    req.session.randomplay = {};
+    req.session.randomplay.resolved = [];
+    
+    models.Quiz.count()
+	.then(function(count) {
+		if(count===req.session.randomplay.resolved){
+			var score = req.session.randomplay.resolved.length;
+			req.session.randomplay.resolved = [];
+			res.render('quizzes/random_none', {score: score});
+		}
+	})
+	.then(function(quiz){
+		var random = Math.round(Math.random()*4);
+		res.render('quizzes/random_play', {quiz: quiz[random], score: req.session.randomplay.resolved});
+	})
+	.catch(function(error){
+		next(error);
+	});
+};

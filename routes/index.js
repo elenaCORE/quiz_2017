@@ -35,4 +35,8 @@ router.get('/help', function(req, res, next) {
     res.render('help');
 });
 
+// RamdomPlay
+router.get('/quizzes/random_play', quizController.randomplay);
+//router.get('/quizzes/randomcheck/:quizId?answer=respuesta', quizController.randomcheck);
+
 module.exports = router;

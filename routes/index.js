@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var quizController = require('../controllers/quiz_controller');
+var quizController = require('../controllers/quiz_controller')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -36,7 +36,8 @@ router.get('/help', function(req, res, next) {
 });
 
 // RamdomPlay
-router.get('/quizzes/random_play', quizController.randomplay);
+router.get('/quizzes/randomplay', quizController.randomplay);
+router.get('/quizzes/randomcheck/:quizId(\\d+)', quizController.randomcheck);
 //router.get('/quizzes/randomcheck/:quizId?answer=respuesta', quizController.randomcheck);
 
 module.exports = router;

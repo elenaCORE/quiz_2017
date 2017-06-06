@@ -35,6 +35,10 @@ var User = sequelize.import(path.join(__dirname, 'user'));
 //Relaciones entre modelos
 Tip.belongsTo(Quiz);
 Quiz.hasMany(Tip);
+User.hasMany(Quiz, {foreignKey: 'AuthorId'});
+Quiz.belongsTo(User, {as: 'Author', foreignKey: 'AuthorId'});
+User.hasMany(Tip, {foreignKey: 'AuthorId'});
+Tip.belongsTo(User, {as: 'Author', foreignKey: 'AuthorId'});
 
 // Create and initiate table
 sequelize.sync().then(function() {

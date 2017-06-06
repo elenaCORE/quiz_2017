@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-<<<<<<< HEAD
 var quizController = require('../controllers/quiz_controller');
 var tipController = require('../controllers/tip_controller');
 var userController = require('../controllers/user_controller');
@@ -36,9 +35,7 @@ router.get(/(?!\/new$|\/edit$|\/play$|\/check$|\/session$|\/(\d+)$)\/[^\/]*$/, f
 });
 
 //-----------------------------------------------------------
-=======
 var quizController = require('../controllers/quiz_controller')
->>>>>>> practica52
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -91,7 +88,6 @@ router.get('/users/:userId(\\d+)/quizzes', quizController.index);     // ver las
 
 
 // Definición de rutas de /quizzes
-<<<<<<< HEAD
 router.get('/quizzes',
     quizController.index);
 router.get('/quizzes/:quizId(\\d+)',
@@ -134,6 +130,9 @@ router.put('/quizzes/:quizId(\\d+)/tips/:tipId(\\d+)/accept',
 router.delete('/quizzes/:quizId(\\d+)/tips/:tipId(\\d+)',
     sessionController.loginRequired,
     tipController.destroy);
+
+router.post('/quizzes/_quizId(\\d+)/tips', tipController.create);
+
 router.get('/quizzes',                     quizController.index);
 router.get('/quizzes/:quizId(\\d+)',       quizController.show);
 router.get('/quizzes/new',                 quizController.new);

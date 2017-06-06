@@ -26,6 +26,16 @@ var sequelize = new Sequelize(url, {storage: storage});
 // Importar la definicion de la tabla Quiz de quiz.js
 var Quiz = sequelize.import(path.join(__dirname, 'quiz'));
 
+// Importar la definicion de la tabla Quiz de quiz.js
+var Tip = sequelize.import(path.join(__dirname, 'tip'));
+
+// Importar la definicion de la tabla Quiz de quiz.js
+var User = sequelize.import(path.join(__dirname, 'user'));
+
+//Relaciones entre modelos
+Tip.belongsTo(Quiz);
+Quiz.hasMany(Tip);
+
 // Create and initiate table
 sequelize.sync().then(function() {
   Quiz.count().then(function(count) {
@@ -42,3 +52,6 @@ sequelize.sync().then(function() {
 
 
 exports.Quiz = Quiz; // exportar definición de tabla Quiz
+exports.Tip = Tip;
+exports.User = User;
+
